@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h1.
+    Enquiry List
+  div.panel.panel-default
+    div.panel-heading
+      table.table
+        thead
+          tr 
+            th Name
+            th Email
+            th Enquiry 
+        tbody
+          each enquiry, i in enquirylist
+            tr
+              td
+                p= enquiry.name
+              td
+                p= enquiry.email
+              td
+                p= enquiry.enquiry

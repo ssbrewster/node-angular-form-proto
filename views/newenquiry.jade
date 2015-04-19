@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    h1= title
+    form#formAddUser.navbar-form.navbar-left(name="addenquiry",method="post",action="/addenquiry")
+      div.form-group  
+        input.form-control(type="text", placeholder="Enter your name", name="name", required)
+      div.form-group
+        input.form-control(type="email", placeholder="Enter your email", name="email", required)
+      div.form-group
+        input.form-control(type="text", placeholder="enquiry", name="enquiry", required)
+        button.btn.btn-default(type="submit") submit
