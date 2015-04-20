@@ -1,6 +1,6 @@
-var express = require('express');
-var router = express.Router();
-var xssFilters = require('xss-filters');
+var express = require('express'),
+    router = express.Router(),
+    xssFilters = require('xss-filters');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -22,7 +22,7 @@ router.get('/enquirylist', function(req, res) {
 
 /* GET New Enquiry page. */
 router.get('/newenquiry', function(req, res) {
-    res.json('newenquiry', { title: 'Send us an enquiry' });
+    res.render('newenquiry', { title: 'Send us an enquiry' });
 });
 
 /* POST to Add Enquiry Service */ 
@@ -43,14 +43,14 @@ router.post('/addenquiry', function(req, res) {
 
     var errors = req.validationErrors();
     if (!errors) {
-        res.json('/addenquiry', {
+        res.render('/addenquiry', {
           title: 'Send an enquiry',
           message: 'Your enquiry has been sent successfully',
           errors: {}
        });
     }
     else {
-        res.json('/addenquiry', {
+        res.render('/addenquiry', {
           title: 'Send an enquiry',
           message: '',
           errors: errors
