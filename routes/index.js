@@ -37,31 +37,14 @@ router.post('/addenquiry', function(req, res) {
     var enquiry = xssFilters.inHTMLData(req.body.enquiry);
 
     // Validate the form data
-    //req.assert('name', 'Name is required').notEmpty();
-    //req.assert('email', 'A valid email address is required').isEmail();
-    //req.assert('enquiry', 'Please tell us what your enquiry is').notEmpty();
+    req.assert('name', 'Name is required').notEmpty();
+    req.assert('email', 'A valid email address is required').isEmail();
+    req.assert('enquiry', 'Please tell us what your enquiry is').notEmpty();
 
-    var errors = req.validationErrors();
-    if (!errors) {
-        res.render('/addenquiry', {
-          title: 'Send an enquiry',
-          message: 'Your enquiry has been sent successfully',
-          errors: {}
-       });
-    }
-    else {
-        res.render('/addenquiry', {
-          title: 'Send an enquiry',
-          message: '',
-          errors: errors
-        });  
-    }
-  
-    // Set our collection
-    var collection = db.get('formcollection');
+    var errors = req.validationErrors();     
 
     // Submit to the DB
-    collection.insert({
+    db.collection('formcollection').insert({
         "name" : name,
         "email" : email,
         "enquiry": enquiry

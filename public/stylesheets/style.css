@@ -8,5 +8,13 @@ a {
 }
 
 .navbar-form .form-group {
-  padding-right: 6px
+  padding: 0 0 10px 0;
+  display: block
+}
+
+.navbar-form .form-group .enquiry {
+    min-height: 200px;
+    min-width: 300px;
+    resize: vertical;
+    overflow: scroll
 }
